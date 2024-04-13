@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Entry - First Cat</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>First Cat</h1>
+        <h2>Data Entry</h2>
+        <form method="post" class="form-container">
+            {% csrf_token %}
+            {{ form.as_table }}
+            <button type="submit" class="btn btn-outline-primary submit">Submit</button>
+        </form>
+    
+        <h2>First Cat Data</h2>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for first_cat in first_cats %}
+                <tr>
+                    <td>{{ first_cat.catId }}</td>
+                    <td>{{ first_cat.catName }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'home' %}" class="btn btn-outline-primary">Back</a>
+    </div>
+</body>
+</html>

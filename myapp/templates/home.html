@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Second Cat</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1 class="title">TestProject Home Page</h1>
+
+    <div class="button-container">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a href="{% url 'first_cat' %}" class="btn btn-outline-primary">First Cat</a>
+                <span class="description">Enter Category 1 Data</span>
+            </li>
+            <li class="list-group-item">
+                <a href="{% url 'second_cat' %}" class="btn btn-outline-primary">Second Cat</a>
+                <span class="description">Enter Category 2 Data</span>
+            </li>
+            <li class="list-group-item">
+                <a href="{% url 'adds' %}" class="btn btn-outline-primary">Adds</a>
+                <span class="description">Enter Category 3 Data</span>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

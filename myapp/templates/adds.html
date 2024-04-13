@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adds</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Add Listing</h1>
+        <h2>Data Entry</h2>
+        <form method="post" class="form-container">
+            {% csrf_token %}
+            {{ form.as_table }}
+            <button type="submit" class="btn btn-outline-primary">Submit</button>
+        </form>
+    
+        <h2>Listing Data</h2>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>Listing ID</th>
+                    <th>Listing name</th>
+                    <th>Subcategory ID</th>
+                    <th>Subcategory name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for add in adds %}
+                <tr>
+                    <td>{{ add.listingId }}</td>
+                    <td>{{ add.listingName }}</td>
+                    <td>{{ add.subcat.subcatId }}</td>
+                    <td>{{ add.subcat.subcatName }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'home' %}" class="btn btn-outline-primary">Back</a>
+    </div>
+</body>
+</html>

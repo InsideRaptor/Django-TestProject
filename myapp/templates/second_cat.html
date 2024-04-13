@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Second Cat</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Second Cat</h1>
+        <h2>Data Entry</h2>
+        <form method="post" class="form-container">
+            {% csrf_token %}
+            {{ form.as_table }}
+            <button type="submit" class="btn btn-outline-primary">Submit</button>
+        </form>
+    
+        <h2>Second Cat Data</h2>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>Subcategory ID</th>
+                    <th>Subcategory name</th>
+                    <th>Category ID</th>
+                    <th>Category name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for second_cat in second_cats %}
+                <tr>
+                    <td>{{ second_cat.subcatId }}</td>
+                    <td>{{ second_cat.subcatName }}</td>
+                    <td>{{ second_cat.cat.catId }}</td>
+                    <td>{{ second_cat.cat.catName }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'home' %}" class="btn btn-outline-primary">Back</a>
+    </div>
+</body>
+</html>
